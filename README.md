@@ -47,6 +47,43 @@ docker build -t image-analysis-api .
 docker run -p 8000:8000 image-analysis-api
 ```
 
+### Testing the API
+## Using Swagger UI (Interactive Testing)
+
+FastAPI automatically generates interactive API documentation at /docs. This is the easiest way to test the endpoints:
+
+Start the server using either local development or Docker method above.
+
+Open your browser and navigate to: http://localhost:8000/docs
+
+You'll see the Swagger UI with all available endpoints.
+
+**Testing Upload Endpoint:**
+```bash
+Click on the "POST /api/v1/upload" endpoint
+
+Click the "Try it out" button
+
+Click "Choose File" and select an image (JPG or PNG, under 5MB)
+
+Click "Execute"
+
+Copy the image_id from the response
+```
+
+**Testing Analyze Endpoint:**
+```bash
+Click on the "POST /api/v1/analyze" endpoint
+
+Click the "Try it out" button
+
+Paste the image_id from the upload response into the request body
+
+Click "Execute"
+
+View the mock analysis results
+```
+
 ## API Endpoints
 
 ### 1. Upload Image
