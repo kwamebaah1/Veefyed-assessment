@@ -106,7 +106,6 @@ Response (Success):
 ```
 
 ### Error Responses
-Common Error Codes:
 400 Bad Request: Invalid file type/size, missing parameters
 
 404 Not Found: Image ID not found
