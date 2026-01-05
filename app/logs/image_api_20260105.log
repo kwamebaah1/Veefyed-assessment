@@ -1,0 +1,9 @@
+2026-01-05 18:28:19,704 - image_analysis_api.app.routes.upload - INFO - Received upload request for file: passp.jpg
+2026-01-05 18:28:19,704 - image_analysis_api.app.routes.upload - WARNING - File validation failed: Error validating file: UploadFile.seek() takes 2 positional arguments but 3 were given
+2026-01-05 18:34:04,822 - image_analysis_api.app.routes.upload - INFO - Received upload request for file: passp.jpg
+2026-01-05 18:34:04,827 - image_analysis_api.app.routes.upload - INFO - Image saved successfully: 85128e95-f900-485d-be4a-f67e728c67c7.jpg
+2026-01-05 18:35:45,562 - image_analysis_api.app.routes.analyze - INFO - Received analysis request for image_id: 85128e95-f900-485d-be4a-f67e728c67c7
+2026-01-05 18:35:45,562 - image_analysis_api.app.routes.analyze - INFO - Found image at: app/storage/images\85128e95-f900-485d-be4a-f67e728c67c7.jpg
+2026-01-05 18:35:45,562 - image_analysis_api.app.services.analysis_service - INFO - Starting mock analysis for: app/storage/images\85128e95-f900-485d-be4a-f67e728c67c7.jpg
+2026-01-05 18:35:45,562 - image_analysis_api.app.services.analysis_service - INFO - Analysis generated for 85128e95-f900-485d-be4a-f67e728c67c7: Sensitive skin, 3 issues
+2026-01-05 18:35:45,562 - image_analysis_api.app.routes.analyze - INFO - Analysis completed for image_id: 85128e95-f900-485d-be4a-f67e728c67c7

@@ -19,18 +19,6 @@ async def validate_image_file(file: UploadFile) -> Dict:
                 "message": f"Invalid file type. Allowed: {', '.join(ALLOWED_EXTENSIONS)}"
             }
         
-        # Check file size
-        # Move to end to get size
-        await file.seek(0, 2)  # Seek to end to get size
-        file_size = file.tell()
-        await file.seek(0)  # Reset to beginning for reading
-        
-        if file_size > MAX_FILE_SIZE:
-            return {
-                "valid": False,
-                "message": f"File size exceeds {MAX_FILE_SIZE // (1024*1024)}MB limit"
-            }
-        
         # Check MIME type
         content_type = file.content_type
         allowed_mime_types = ["image/jpeg", "image/jpg", "image/png"]

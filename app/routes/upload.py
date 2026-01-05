@@ -21,7 +21,7 @@ async def upload_image(file: UploadFile = File(...)):
     try:
         logger.info(f"Received upload request for file: {file.filename}")
         
-        # Validate file 
+        # Validate file type and MIME
         validation_result = await validate_image_file(file)
         if not validation_result["valid"]:
             logger.warning(f"File validation failed: {validation_result['message']}")
@@ -30,6 +30,22 @@ async def upload_image(file: UploadFile = File(...)):
                 detail=validation_result["message"]
             )
         
+        # Read file content to check size
+        contents = await file.read()
+        file_size = len(contents)
+        
+        # Check file size (5MB limit)
+        MAX_FILE_SIZE = 5 * 1024 * 1024
+        if file_size > MAX_FILE_SIZE:
+            logger.warning(f"File size exceeds limit: {file_size} bytes")
+            raise HTTPException(
+                status_code=400,
+                detail=f"File size exceeds {MAX_FILE_SIZE // (1024*1024)}MB limit"
+            )
+        
+        # Reset file pointer after reading
+        await file.seek(0)
+        
         # Generate unique ID for the image
         image_id = str(uuid.uuid4())
         file_extension = os.path.splitext(file.filename)[1].lower()
@@ -37,7 +53,6 @@ async def upload_image(file: UploadFile = File(...)):
         file_path = os.path.join("app/storage/images", filename)
         
         # Save the file
-        contents = await file.read()
         with open(file_path, "wb") as f:
             f.write(contents)
         
@@ -55,5 +70,5 @@ async def upload_image(file: UploadFile = File(...)):
         logger.error(f"Upload failed: {str(e)}")
         raise HTTPException(
             status_code=500,
-            detail="Internal server error during upload"
+            detail=f"Internal server error during upload: {str(e)}"
         )
