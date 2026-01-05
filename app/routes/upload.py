@@ -21,8 +21,8 @@ async def upload_image(file: UploadFile = File(...)):
     try:
         logger.info(f"Received upload request for file: {file.filename}")
         
-        # Validate file
-        validation_result = validate_image_file(file)
+        # Validate file 
+        validation_result = await validate_image_file(file)
         if not validation_result["valid"]:
             logger.warning(f"File validation failed: {validation_result['message']}")
             raise HTTPException(

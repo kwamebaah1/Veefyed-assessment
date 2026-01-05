@@ -5,7 +5,7 @@ from typing import Dict
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png"}
 MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
 
-def validate_image_file(file: UploadFile) -> Dict:
+async def validate_image_file(file: UploadFile) -> Dict:
     """
     Validate uploaded image file
     Returns: {"valid": bool, "message": str}
@@ -20,10 +20,10 @@ def validate_image_file(file: UploadFile) -> Dict:
             }
         
         # Check file size
-        # Move to beginning of file
+        # Move to end to get size
         await file.seek(0, 2)  # Seek to end to get size
         file_size = file.tell()
-        await file.seek(0)
+        await file.seek(0)  # Reset to beginning for reading
         
         if file_size > MAX_FILE_SIZE:
             return {
