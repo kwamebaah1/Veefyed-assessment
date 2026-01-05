@@ -48,6 +48,7 @@ docker run -p 8000:8000 image-analysis-api
 ```
 
 ## API Endpoints
+
 1. Upload Image
 POST /api/v1/upload
 
@@ -65,5 +66,41 @@ Response (Success):
   "image_id": "123e4567-e89b-12d3-a456-426614174000",
   "filename": "123e4567-e89b-12d3-a456-426614174000.jpg",
   "message": "Image uploaded successfully"
+}
+```
+
+2. Analyze Image
+POST /api/v1/analyze
+
+Performs mock analysis on an uploaded image.
+
+Request:
+```bash
+{
+  "image_id": "123e4567-e89b-12d3-a456-426614174000"
+}
+```
+Response (Success):
+```bash
+{
+  "image_id": "123e4567-e89b-12d3-a456-426614174000",
+  "analysis": {
+    "skin_type": "Oily",
+    "skin_type_confidence": 0.92,
+    "detected_issues": ["Hyperpigmentation", "Acne"],
+    "overall_confidence": 0.87,
+    "analysis_timestamp": "2024-01-01T12:00:00Z",
+    "file_info": {
+      "size_bytes": 123456,
+      "format": "JPEG",
+      "analyzed": true
+    },
+    "mock_metrics": {
+      "hydration_level": 0.76,
+      "oiliness_level": 0.82,
+      "evenness_score": 0.68
+    }
+  },
+  "message": "Analysis completed successfully"
 }
 ```
