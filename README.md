@@ -42,3 +42,8 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```bash
 docker build -t image-analysis-api .
 ```
+2. **Run the container:**
+```bash
+docker run -p 8000:8000 image-analysis-api
+```
+
