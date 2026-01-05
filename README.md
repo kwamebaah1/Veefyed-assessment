@@ -49,7 +49,7 @@ docker run -p 8000:8000 image-analysis-api
 
 ## API Endpoints
 
-1. **Upload Image**
+### 1. Upload Image
 POST /api/v1/upload
 
 Uploads an image file for analysis.
@@ -69,7 +69,7 @@ Response (Success):
 }
 ```
 
-2. **Analyze Image**
+### 2. Analyze Image
 POST /api/v1/analyze
 
 Performs mock analysis on an uploaded image.
