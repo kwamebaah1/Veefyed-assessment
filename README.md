@@ -30,3 +30,15 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
+
+2. **Run the application:**
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+## Using Docker
+
+1. **Build the Docker image:**
+```bash
+docker build -t image-analysis-api .
+```
