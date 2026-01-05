@@ -47,3 +47,23 @@ docker build -t image-analysis-api .
 docker run -p 8000:8000 image-analysis-api
 ```
 
+## API Endpoints
+1. Upload Image
+POST /api/v1/upload
+
+Uploads an image file for analysis.
+
+Request:
+
+Content-Type: multipart/form-data
+
+Body: file (image file, max 5MB, JPEG/PNG)
+
+Response (Success):
+```bash
+{
+  "image_id": "123e4567-e89b-12d3-a456-426614174000",
+  "filename": "123e4567-e89b-12d3-a456-426614174000.jpg",
+  "message": "Image uploaded successfully"
+}
+```
