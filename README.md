@@ -148,3 +148,14 @@ Response (Success):
 404 Not Found: Image ID not found
 
 500 Internal Server Error: Server-side processing error
+
+## Assumptions & Decisions
+**File Storage:** Images are stored locally in app/storage/images/. In production, this would use cloud storage (S3, etc.)
+
+**Analysis Mocking:** Returns deterministic results based on image_id hash for consistency
+
+**Image Formats:** Only JPEG and PNG are supported
+
+**File Size:** Limited to 5MB for performance and safety
+
+**Security:** No authentication in this version
